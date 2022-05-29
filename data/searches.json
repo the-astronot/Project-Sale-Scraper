@@ -1,0 +1,34 @@
+{
+	"homelabsales": 
+	{
+		"require": [
+			[
+				"[FS]",
+				"FREE"
+			],
+			[
+				"MA",
+				"NY",
+				"TX"
+			]
+		],
+		"100": [
+			"NAS",
+			"HDD"
+		],
+		"50" : [
+			"ECC DDR3",
+			"UNIFI",
+			[
+				" AP ",
+				"Access Point"
+			],
+			"IDRAC"
+		],
+		"20" : [
+			"Rails"
+		]
+	}
+
+
+}
