@@ -9,26 +9,28 @@
 			[
 				"MA",
 				"NY",
-				"TX"
+				"TX",
+				"[US]",
+				"NH",
+				"CT"
 			]
 		],
 		"100": [
 			"NAS",
-			"HDD"
+			"HDD",
+			"IDRAC"
 		],
 		"50" : [
 			"ECC DDR3",
-			"UNIFI",
 			[
+				"UNIFI",
 				" AP ",
 				"Access Point"
 			],
-			"IDRAC"
+			"Switch"
 		],
 		"20" : [
 			"Rails"
 		]
 	}
-
-
 }

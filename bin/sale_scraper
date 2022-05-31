@@ -1,0 +1,5 @@
+#!/bin/bash
+file=$(readlink -f "${BASH_SOURCE:-$0}")
+repo=$(dirname $(dirname $file))
+
+python3 $repo/src/main.py
