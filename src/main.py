@@ -21,10 +21,15 @@ def startup():
 
 def main(reddit, config, discordbot):
 	scraper = Scraper(config, reddit)
+	reload_int = 5
+	t = 0
 	while True:
+		if t == reload_int:
+			scraper.load_keywords(config)
+			t = 0
 		for sub in scraper.conf:
-			scraper.getXPosts(20, sub, discordbot)
-		time.sleep(120)
+			scraper.getXPosts(5, sub, discordbot)
+		time.sleep(60)
 
 
 if __name__ == '__main__':

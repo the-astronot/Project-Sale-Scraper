@@ -18,19 +18,17 @@ class Scraper:
 		self.ready = False
 		self.past_posts = {}
 		self.reddit = reddit
+		self.ready = self.load_keywords(config)
+		if not self.ready:
+			print("Missing file: \"{}\"".format(config))
+
+	def load_keywords(self,config):
 		if path.exists(path.join(data_path,config)):
 			f = open(path.join(data_path,config))
 			self.conf = json.load(f)
 			f.close()
-			if path.exists(path.join(data_path,"notifications.json")):
-				f = open(path.join(data_path,"notifications.json"))
-				self.notif = json.load(f)
-				f.close()
-				self.ready = True
-			else:
-				print("Missing file: \"notifications.json\"")
-		else:
-			print("Missing file: \"{}\"".format(config))
+			return True
+		return False
 
 	def seen_before(self, post):
 		if post.id in self.past_posts:
@@ -67,10 +65,10 @@ class Scraper:
 			float_val = float(point_val)
 			for keyword in sub_dict[point_val]:
 				if type(keyword) == "str":
-					if self.search_for(keyword, post.selftext,False):
+					if self.search_for(keyword, post.title+post.selftext,False):
 						score += float_val
 				else:
-					if self.search_or(keyword, post.selftext,False):
+					if self.search_or(keyword, post.title+post.selftext,False):
 						score += float_val
 		return score
 
@@ -87,7 +85,7 @@ class Scraper:
 			bot.post_message(msg)
 		elif value >= 50:
 			msg = "{0}\n{1}".format(post.title,post.url)
-			bot.post_message(msg)
+			bot.post_message(msg.replace("&#x200B;",""))
 	
 	# Check text for keyword
 	def search_for(self, keyword, text, case):

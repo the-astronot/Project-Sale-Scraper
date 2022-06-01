@@ -4,7 +4,8 @@
 		"require": [
 			[
 				"[FS]",
-				"FREE"
+				"FREE",
+				"[fs]"
 			],
 			[
 				"MA",
@@ -12,11 +13,15 @@
 				"TX",
 				"[US]",
 				"NH",
-				"CT"
+				"CT",
+				"[US-E]"
 			]
 		],
 		"100": [
-			"NAS",
+			[
+				"NAS",
+				"Network Attached Storage"
+			],
 			"HDD",
 			"IDRAC"
 		],
@@ -25,12 +30,68 @@
 			[
 				"UNIFI",
 				" AP ",
-				"Access Point"
+				"Access Point",
+				"Ubiquity"
 			],
 			"Switch"
 		],
 		"20" : [
 			"Rails"
+		]
+	},
+	"hardwaresales": 
+	{
+		"require":
+		[
+			[
+				"[USA-MA]",
+				"[USA-TX]",
+				"[USA-NY]",
+				"[USA-CT]",
+				"[USA-NH]"
+			],
+			[
+				"[W] Cash",
+				"[W] Paypal",
+				"[W] Local Cash",
+				"[W] Venmo",
+				"[W] PayPal",
+				"[W] cash",
+				"[W] paypal",
+				"[W] local cash",
+				"[W] venmo"
+			]
+		],
+		"100": 
+		[
+			[
+				"NAS",
+				"network attached storage"
+			],
+			[
+				"networking"
+			],
+			"iDRAC"
+		],
+		"50":
+		[
+			[
+				"router",
+				" ap ",
+				"access point",
+				"ubiquity",
+				"cisco"
+			],
+			" itx ",
+			"HDD",
+			[
+				"2K",
+				"4K",
+				"ultrawide",
+				"ultra-wide",
+				"ultra wide"
+			],
+			" vr "
 		]
 	}
 }
