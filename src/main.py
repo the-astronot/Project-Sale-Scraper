@@ -30,6 +30,7 @@ def main(reddit, config, discordbot):
 		for sub in scraper.conf:
 			scraper.getXPosts(5, sub, discordbot)
 		time.sleep(60)
+		t+=1
 
 
 if __name__ == '__main__':
