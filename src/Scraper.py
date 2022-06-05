@@ -1,12 +1,13 @@
 """
 @author: jormungandr1105
-@desc:
+@desc: scrapes reddit threads for keywords
 @created: 05/27/2022
 
 """
 import json
 import os.path as path
 import praw
+import datetime
 from DiscordBot import DiscordBot
 
 
@@ -51,6 +52,8 @@ class Scraper:
 			return -1
 		sub_dict = self.conf[sub]
 		if "require" in sub_dict:
+			# If post doesn't contain required keywords,
+			# stop processing it
 			required = sub_dict["require"]
 			for req in required:
 				if type(req) == "str":
@@ -60,6 +63,7 @@ class Scraper:
 					if not self.search_or(req,post.title,True):
 						return 0
 		for point_val in sub_dict:
+			# Don't include required towards totals
 			if point_val == "require":
 				continue
 			float_val = float(point_val)
@@ -80,11 +84,12 @@ class Scraper:
 			return
 		elif value < 1:
 			return
+		msg = "[{}]\n".format(str(datetime.datetime.now())[:19])
 		if value >= 100:
-			msg = "{0}\n\t{1}\n{2}".format(post.title,post.selftext.replace("\n\n","\n").replace("\n","\n\t"),post.url)
+			msg += "{0}\n\t{1}\n{2}".format(post.title,post.selftext.replace("\n\n","\n").replace("\n","\n\t"),post.url)
 			bot.post_message(msg)
 		elif value >= 50:
-			msg = "{0}\n{1}".format(post.title,post.url)
+			msg += "{0}\n{1}".format(post.title,post.url)
 			bot.post_message(msg.replace("&#x200B;",""))
 	
 	# Check text for keyword
