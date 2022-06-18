@@ -2,9 +2,9 @@
 @author: jormungandr1105
 @desc: scrapes reddit threads for keywords
 @created: 05/27/2022
-
 """
 import json
+import time
 import os.path as path
 import praw
 import datetime
@@ -36,12 +36,18 @@ class Scraper:
 			return True
 		return False
 
+	def purge_old_posts(self):
+		for post in self.past_posts:
+			# If post is more than 12 hours old, ditch it
+			if time.time() - self.past_posts[post] > 43200:
+				self.past_posts.pop(post)
+
 	def getXPosts(self, x, sub, bot):
 		if self.ready:
 			posts = self.reddit.subreddit(sub).new(limit=x)
 			for post in posts:
 				if not self.seen_before(post):
-					self.past_posts[post.id] = True
+					self.past_posts[post.id] = time.time()
 					value = self.assess_post(post,sub)
 					self.assess_value(post,sub,value,bot)
 

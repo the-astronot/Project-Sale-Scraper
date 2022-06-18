@@ -26,6 +26,7 @@ def main(reddit, config, discordbot):
 	while True:
 		if t == reload_int:
 			scraper.load_keywords(config)
+			scraper.purge_old_posts()
 			t = 0
 		for sub in scraper.conf:
 			scraper.getXPosts(5, sub, discordbot)
