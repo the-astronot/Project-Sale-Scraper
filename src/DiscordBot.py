@@ -16,7 +16,7 @@ class DiscordBot:
 		self.channelID = channel
 		self.baseURL = "https://discordapp.com/api/channels/{}/messages".format(self.channelID)
 		self.headers = { "Authorization":"Bot {}".format(self.botToken),
-            "User-Agent":"myBotThing (http://some.url, v0.1)",
+            "User-Agent":"Sale-Scraper (v0.1)",
             "Content-Type":"application/json", }
 
 

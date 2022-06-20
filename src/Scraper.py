@@ -37,10 +37,15 @@ class Scraper:
 		return False
 
 	def purge_old_posts(self):
-		for post in self.past_posts:
-			# If post is more than 12 hours old, ditch it
-			if time.time() - self.past_posts[post] > 43200:
-				self.past_posts.pop(post)
+		done = False
+		while not done:
+			done = True
+			for post in self.past_posts:
+				# If post is more than 12 hours old, ditch it
+				if time.time() - self.past_posts[post] > 43200:
+					self.past_posts.pop(post)
+					done = False
+					break
 
 	def getXPosts(self, x, sub, bot):
 		if self.ready:
@@ -93,7 +98,7 @@ class Scraper:
 		msg = "[{}]\n".format(str(datetime.datetime.now())[:19])
 		if value >= 100:
 			msg += "{0}\n\t{1}\n{2}".format(post.title,post.selftext.replace("\n\n","\n").replace("\n","\n\t"),post.url)
-			bot.post_message(msg)
+			bot.post_message(msg.replace("&#x200B;",""))
 		elif value >= 50:
 			msg += "{0}\n{1}".format(post.title,post.url)
 			bot.post_message(msg.replace("&#x200B;",""))
