@@ -23,6 +23,7 @@
 				"Network Attached Storage"
 			],
 			"HDD",
+			"TB",
 			"IDRAC"
 		],
 		"50" : [
@@ -31,7 +32,7 @@
 				"UNIFI",
 				" AP ",
 				"Access Point",
-				"Ubiquity"
+				"Cisco"
 			],
 			"Switch"
 		],
@@ -44,11 +45,11 @@
 		"require":
 		[
 			[
-				"[USA-MA]",
-				"[USA-TX]",
-				"[USA-NY]",
-				"[USA-CT]",
-				"[USA-NH]"
+				"MA]",
+				"TX]",
+				"NY]",
+				"CT]",
+				"NH]"
 			],
 			[
 				"[W] Cash",

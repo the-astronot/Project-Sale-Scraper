@@ -29,7 +29,12 @@ def main(reddit, config, discordbot):
 			scraper.purge_old_posts()
 			t = 0
 		for sub in scraper.conf:
-			scraper.getXPosts(5, sub, discordbot)
+			try:
+				scraper.getXPosts(5, sub, discordbot)
+			except KeyboardInterrupt:
+				exit(0)
+			except:
+				pass
 		time.sleep(60)
 		t+=1
 
