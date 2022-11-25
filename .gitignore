@@ -8,3 +8,9 @@ __pycache__
 
 # Except example
 !example.env
+
+# virtual-env
+.venv
+
+# Settings
+.fcsettings

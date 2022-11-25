@@ -1,8 +1,8 @@
 #!/bin/bash
 ################################################################################
-# sale_scraper
+# setup
 ##
-# Purpose: activates .venv and runs main python program
+# Purpose: Prepares env for program
 ## 
 ################################################################################
 #	Copyright (C) 2022  Max Marshall   
@@ -19,16 +19,19 @@
 #________________
 #|_File_History_|_______________________________________________________________
 #|_Programmer______|_Date_______|_Comments______________________________________
-#| Max Marshall    | 2022-11-25 | Added license
+#| Max Marshall    | 2022-11-24 | Created File
 #|
 #|
 #|
 
-# Get file directory
-FILE_LOC="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd)"
 
-source ../.venv/bin/activate
+if [[ ! -d ".venv" ]]; then
+	python3 -m venv .venv
+	echo "created .venv"
+else
+	echo ".venv already exists"
+fi
 
-python3 $FILE_LOC/../src/main.py
+source .venv/bin/activate
 
-deactivate
+pip3 install -r requirements.txt
